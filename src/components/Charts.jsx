@@ -11,6 +11,9 @@ import {
   YAxis,
 } from 'recharts'
 
+const baseAxisTick = { fill: '#64748b', fontSize: 12 }
+const categoryAxisTick = { ...baseAxisTick, fontSize: 10 }
+
 function Charts({
   monthlySpend = [],
   spendByVehicle = [],
@@ -27,10 +30,10 @@ function Charts({
         <h2 className="chart-title">{showSpend ? 'Monthly Spend' : 'Monthly Tyres Ordered'}</h2>
         <div className="chart-frame">
           <ResponsiveContainer>
-            <LineChart data={monthlySpend}>
+            <LineChart data={monthlySpend} margin={{ bottom: 8 }}>
               <CartesianGrid stroke="#d9e2ec" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="month" tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="month" tick={baseAxisTick} axisLine={false} tickLine={false} interval={0} />
+              <YAxis tick={baseAxisTick} axisLine={false} tickLine={false} />
               <Tooltip />
               <Legend />
               <Line
@@ -53,15 +56,19 @@ function Charts({
         </div>
         <div className="chart-frame">
           <ResponsiveContainer>
-            <BarChart data={spendByVehicle}>
+            <BarChart data={spendByVehicle} margin={{ bottom: 52 }}>
               <CartesianGrid stroke="#d9e2ec" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="unit_number"
-                tick={{ fill: '#64748b', fontSize: 12 }}
+                tick={categoryAxisTick}
                 axisLine={false}
                 tickLine={false}
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={72}
               />
-              <YAxis tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={baseAxisTick} axisLine={false} tickLine={false} />
               <Tooltip />
               <Legend />
               <Bar dataKey={valueKey} name={valueLabel} fill="#0f766e" radius={[6, 6, 0, 0]} />
@@ -77,15 +84,19 @@ function Charts({
         </div>
         <div className="chart-frame">
           <ResponsiveContainer>
-            <BarChart data={spendByUnitType}>
+            <BarChart data={spendByUnitType} margin={{ bottom: 52 }}>
               <CartesianGrid stroke="#d9e2ec" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="unit_type"
-                tick={{ fill: '#64748b', fontSize: 12 }}
+                tick={categoryAxisTick}
                 axisLine={false}
                 tickLine={false}
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={72}
               />
-              <YAxis tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={baseAxisTick} axisLine={false} tickLine={false} />
               <Tooltip />
               <Legend />
               <Bar dataKey={valueKey} name={valueLabel} fill="#9333ea" radius={[6, 6, 0, 0]} />
@@ -101,15 +112,19 @@ function Charts({
         </div>
         <div className="chart-frame">
           <ResponsiveContainer>
-            <BarChart data={spendByTyre}>
+            <BarChart data={spendByTyre} margin={{ bottom: 52 }}>
               <CartesianGrid stroke="#d9e2ec" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="tyre_size"
-                tick={{ fill: '#64748b', fontSize: 12 }}
+                tick={categoryAxisTick}
                 axisLine={false}
                 tickLine={false}
+                interval={0}
+                angle={-45}
+                textAnchor="end"
+                height={72}
               />
-              <YAxis tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis tick={baseAxisTick} axisLine={false} tickLine={false} />
               <Tooltip />
               <Legend />
               <Bar dataKey={valueKey} name={valueLabel} fill="#c2410c" radius={[6, 6, 0, 0]} />
